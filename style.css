@@ -1,0 +1,928 @@
+/* Basic Reset & Body */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    color: #333;
+    background-color: #fff;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+a {
+    color: #1a73e8;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Header */
+.site-header {
+    /* Header styling */
+}
+
+.header-top-bar {
+    background-color: #012850;
+    color: #fff;
+    padding: 10px 0; /* Logo padding */
+    text-align: center;
+}
+
+.logo-container {
+    padding: 0;
+    display: inline-block;
+     /* Inherits max-width and margin: auto from general .container */
+}
+
+.header-top-bar .logo {
+    line-height: 0;
+    margin: 0;
+    padding: 0;
+    flex-shrink: 0;
+}
+.header-top-bar .logo img {
+    height: 60px; /* Adjust logo height if needed */
+    width: auto;
+    display: block;
+}
+
+/* Main Navigation Bar */
+.main-nav {
+    background-color: #000000; /* Black nav bar */
+    border-bottom: 1px solid #333333; /* Dark gray border */
+}
+
+.main-nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center; /* Center nav items */
+    padding: 0;
+    margin: 0;
+}
+
+.main-nav li {
+    margin-right: 0;
+}
+
+.main-nav a {
+    display: block;
+    color: #fff;
+    font-weight: bold;
+    font-size: 14px;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 10px 15px;
+    border-bottom: 3px solid transparent;
+    position: relative;
+    transition: background-color 0.2s ease;
+}
+
+.main-nav a:hover {
+     text-decoration: none;
+     background-color: #222222; /* Dark gray hover */
+}
+
+.main-nav li.active a {
+     border-bottom: 3px solid #fff;
+     background-color: #222222;
+}
+
+/* RECOMMENDED ARTICLES SECTION */
+.recommended-section {
+    background-color: #f6f6f6;
+    padding: 15px 0;
+    border-top: 1px solid #e0e0e0;
+    border-bottom: 1px solid #e0e0e0;
+    margin-bottom: 20px; /* Space below section */
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); /* Adjust values as needed */
+}
+
+.recommended-title {
+    font-size: 18px;
+    font-weight: bold;
+    color: #000000;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+    /* Uses .container width from HTML */
+}
+
+.recommended-items-wrapper {
+    overflow-x: auto; /* Keep this to enable scrolling internally */
+    overflow-y: hidden;
+    white-space: nowrap; /* Crucial for inline-block/flex layout before JS runs */
+    -webkit-overflow-scrolling: touch;
+    padding: 0 15px;
+    margin: 0 auto;
+    max-width: 100%;
+
+    /* --- HIDE SCROLLBAR --- */
+    scrollbar-width: none;  /* Firefox */
+    -ms-overflow-style: none;  /* IE/Edge */
+}
+.recommended-items-wrapper::-webkit-scrollbar {
+    display: none; /* Safari/Chrome */
+}
+
+.recommended-items-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 15px;
+}
+
+.recommended-item {
+    display: inline-block;
+    vertical-align: top;
+    width: 220px; /* Adjust card width */
+    flex: 0 0 auto;
+    white-space: normal;
+}
+
+.recommended-item a {
+    display: flex;
+    align-items: flex-start;
+    text-decoration: none;
+    color: inherit;
+    background-color: #fff;
+    border: 1px solid #e0e0e0;
+    padding: 8px;
+    height: 100%;
+}
+
+.recommended-item a:hover .recommended-item-title {
+    text-decoration: underline;
+    color: #012850;
+}
+
+.recommended-item-image {
+    width: 80px; /* Adjust thumbnail width */
+    height: 55px; /* Adjust thumbnail height */
+    flex-shrink: 0;
+    margin-right: 10px;
+    overflow: hidden;
+}
+
+.recommended-item-image img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.recommended-item-title {
+    font-size: 14px;
+    line-height: 1.3;
+    font-weight: bold;
+    color: #111;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    max-height: calc(14px * 1.3 * 3);
+}
+
+/* Thick grey line below */
+.recommended-section::after {
+    content: '';
+    display: block;
+    height: 5px;
+    background-color: #dcdcdc;
+    margin-top: 15px;
+    max-width: 1000px; /* Match .container width */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+/* Article Container */
+.article-container {
+    padding-top: 10px;
+    padding-bottom: 20px;
+}
+
+.article-header {
+    /* Add these lines to center the header block */
+    max-width: 750px;  /* <<< Match article-body max-width for alignment */
+    margin-left: auto;
+    margin-right: auto;
+    /* Remove any explicit text-align from the header itself */
+    /* text-align: left; */
+    margin-bottom: 20px; /* Add some overall bottom margin */
+}
+
+/* Keep Exclusive Banner left-aligned within the centered header */
+.article-exclusive-banner {
+    margin-bottom: 10px;
+    line-height: 0;
+    text-align: left; /* <<< Keep banner left-aligned */
+}
+.article-exclusive-banner img {
+    height: 20px; /* Adjust height */
+    width: auto;
+    display: inline-block;
+    max-width: none;
+    vertical-align: middle;
+}
+
+/* Keep Headline left-aligned */
+.article-header h1 {
+    font-size: 36px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    line-height: 1.2;
+    color: #111;
+    text-align: left; /* <<< Keep left aligned */
+}
+
+/* Keep Timestamp and Authors left-aligned */
+.article-header .timestamp,
+.article-header .authors {
+    font-size: 14px;
+    color: #012850;
+    margin-bottom: 5px;
+    text-align: left; /* <<< Keep left aligned */
+}
+.article-header .authors {
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+/* Keep Share/Save section left-aligned */
+.share-save {
+    /* Removed margin-bottom, now handled by .article-header */
+    margin-bottom: 0;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 15px;
+    text-align: left;    /* <<< Keep left aligned */
+}
+
+.share-save a {
+    margin-right: 20px;
+    margin-left: 0;
+    font-size: 14px;
+    color: #555;
+    font-weight: bold;
+    display: inline-block;
+}
+.share-save a:hover {
+    color: #111;
+    text-decoration: none;
+}
+.share-save i {
+    margin-right: 5px;
+}
+
+/* Article Body */
+.article-body {
+    font-size: 15px;
+    line-height: 1.6; /* Adjusted line height for readability */
+    color: #000000;
+    font-weight: 540; /* Ensure standard weight */
+
+    /* Keep the max-width to constrain line length */
+    max-width: 750px; /* Or your preferred width */
+
+    /* --- RE-ADD these lines to center the block horizontally --- */
+    margin-left: auto;
+    margin-right: auto;
+    /* --- End centering lines --- */
+
+    /* Ensure text *within* the block defaults to left */
+    text-align: left;
+}
+
+.article-body p {
+    margin-bottom: 1.1em; /* Keep reduced space between paragraphs */
+    text-align: left;     /* <<< Explicitly keep paragraph text left-aligned */
+}
+
+.article-body a {
+    color: #012850;
+    font-weight: bold;
+}
+.article-body a:hover {
+    text-decoration: underline;
+}
+
+/* --- Ensure Clearfix is Present for Article Body --- */
+.article-body::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/* --- Inline Ad within Article Body --- */
+.inline-body-ad {
+    float: right; /* Float it to the right */
+    max-width: 350px; /* <<< Slightly larger width than left sidebar ads (adjust as needed) */
+    width: 100%; /* Allow shrinking */
+    margin-left: 25px; /* Space between ad and text */
+    margin-bottom: 15px; /* Space below ad */
+    margin-top: 5px; /* Space above ad */
+    padding: 10px;
+    border: 1px solid #e0e0e0;
+    background-color: #f9f9f9;
+}
+
+.inline-body-ad h4 {
+    font-size: 10px;
+    color: #888;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    font-weight: normal;
+    text-align: center;
+}
+
+.inline-body-ad img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+.inline-body-ad a {
+    display: block;
+}
+
+/* Main Image & Inline Images */
+figure {
+    margin-bottom: 20px;
+}
+
+figure.main-image {
+     margin-top: 10px;
+     display: block;
+     max-width: 750px;
+     margin-left: auto;
+     margin-right: auto;
+     margin-bottom: 20px;
+     text-align: center;
+}
+
+figure.main-image img {
+     display: block;
+     margin: 0 auto;
+}
+
+figcaption {
+    font-size: 14px;
+    color: #555;
+    padding-top: 5px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+    margin-bottom: 0;
+    display: inline-block;
+    width: 100%;
+    box-sizing: border-box;
+}
+figcaption .credit {
+    font-weight: bold;
+    margin-left: 5px;
+}
+
+/* Article Tags */
+.article-tags {
+    margin-top: 30px;
+    padding-top: 15px;
+    border-top: 1px solid #eee;
+}
+
+.article-tags a {
+    display: inline-block;
+    background-color: #eee;
+    color: #333;
+    padding: 5px 10px;
+    margin-right: 10px;
+    border-radius: 3px;
+    font-size: 14px;
+    font-weight: bold;
+}
+.article-tags a:hover {
+    background-color: #ddd;
+    text-decoration: none;
+}
+
+/* Related Content */
+.related-content {
+    margin-top: 40px;
+    border-top: 1px solid #000;
+    padding-top: 20px;
+}
+
+.related-content h2 {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.related-item {
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #eee;
+}
+.related-item:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.related-item a {
+    font-weight: bold;
+    color: #111;
+    display: block;
+    font-size: 16px;
+}
+.related-item a:hover {
+    color: #012850;
+    text-decoration: none;
+}
+.related-icon {
+    color: #012850;
+    margin-right: 8px;
+}
+
+.related-item .related-meta {
+    font-size: 13px;
+    color: #555;
+    margin-top: 5px;
+}
+
+/* --- NEW NYP-Style Footer --- */
+.nyp-footer {
+    background-color: #fff; /* White background */
+    color: #333;
+    padding: 40px 0 20px 0; /* More padding */
+    font-family: Arial, Helvetica, sans-serif; /* Match NYP font more closely if desired */
+    border-top: 1px solid #e0e0e0;
+    font-weight: bold; /* Make all footer text bold */
+}
+
+.nyp-footer .container {
+    max-width: 1100px; /* Slightly wider container for footer */
+}
+
+/* Footer Top: Logo & Social */
+.footer-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    padding-bottom: 25px;
+    border-bottom: 1px solid #e0e0e0; /* Use border instead of hr */
+}
+
+.footer-main-logo img {
+    height: 30px; /* Adjust logo size */
+    width: auto;
+}
+
+.footer-social-icons a {
+    display: inline-block;
+    margin-left: 8px; /* Space between icons */
+    color: #fff; /* Color for Font Awesome icons */
+    background-color: #555; /* Default background */
+    width: 32px; /* Icon container size */
+    height: 32px;
+    line-height: 32px; /* Center icon vertically */
+    text-align: center;
+    border-radius: 50%; /* Make it circular */
+    font-size: 16px; /* Icon size */
+    transition: opacity 0.2s ease;
+}
+.footer-social-icons a:hover {
+    opacity: 0.8;
+}
+/* Specific social colors (examples) */
+.footer-social-icons a[aria-label="Facebook"] { background-color: #1877F2; }
+.footer-social-icons a[aria-label="X/Twitter"] { background-color: #000; } /* Black for X */
+.footer-social-icons a[aria-label="Instagram"] { background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%,#d6249f 60%,#285AEB 90%); } /* Insta gradient */
+.footer-social-icons a[aria-label="LinkedIn"] { background-color: #0A66C2; }
+.footer-social-icons a[aria-label="Email"] { background-color: #EA4335; } /* Example Red */
+.footer-social-icons a[aria-label="YouTube"] { background-color: #FF0000; }
+
+
+/* Footer Links Grid */
+.footer-links-grid {
+    display: grid;
+    /* Adjust column templates - first column wider */
+    grid-template-columns: 2fr repeat(4, 1fr);
+    gap: 20px; /* Gap between columns */
+    margin-bottom: 30px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid #e0e0e0; /* Use border instead of hr */
+}
+
+.footer-column h4 {
+    font-size: 11px; /* Small heading */
+    font-weight: bold;
+    color: #000;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+    padding-bottom: 5px;
+    border-bottom: 2px solid #000; /* Underline heading */
+    display: inline-block; /* Fit underline to text */
+}
+.footer-column h4.spacer-heading { /* Hide spacer visually */
+    border-bottom: none;
+    visibility: hidden;
+}
+
+.footer-column ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 20px 0; /* Space below list */
+}
+/* Split column handling */
+.footer-column-split {
+    display: flex;
+    gap: 15px; /* Space between the two lists */
+}
+.footer-column-split ul {
+     flex: 1; /* Make lists share space */
+     margin-bottom: 0; /* No margin below split lists */
+}
+
+
+.footer-column li {
+    margin-bottom: 8px; /* Space between links */
+}
+
+.footer-column a {
+    color: #555; /* Grey link color */
+    font-size: 12px; /* Small link text */
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+.footer-column a:hover {
+    color: #000; /* Darken on hover */
+    text-decoration: underline;
+}
+
+
+/* Footer Legal */
+.footer-legal {
+    text-align: center;
+    font-size: 11px;
+    color: #666;
+    line-height: 1.6;
+}
+
+.footer-legal p {
+    margin-bottom: 5px;
+}
+
+.footer-legal a {
+    color: #666;
+    text-decoration: none;
+    margin: 0 5px; /* Space around legal links */
+}
+.footer-legal a:hover {
+    color: #000;
+    text-decoration: underline;
+}
+
+.powered-by {
+    margin-top: 15px;
+    font-size: 10px;
+}
+
+
+/* Responsive Footer */
+@media (max-width: 992px) { /* Tablet */
+    .footer-links-grid {
+        /* Stack to 2 or 3 columns */
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 768px) { /* Mobile */
+     .footer-top {
+         flex-direction: column; /* Stack logo and icons */
+         border-bottom: none; /* Remove border */
+         margin-bottom: 15px;
+         padding-bottom: 15px;
+     }
+      .footer-main-logo {
+          margin-bottom: 15px; /* Space below logo */
+      }
+      .footer-links-grid {
+        /* Stack to 1 or 2 columns */
+        grid-template-columns: repeat(2, 1fr);
+         border-bottom: none; /* Remove border */
+          margin-bottom: 15px;
+         padding-bottom: 15px;
+    }
+    .footer-column {
+        margin-bottom: 20px; /* Add space when stacked */
+        padding-bottom: 20px;
+        border-bottom: 1px solid #eee; /* Add separator when stacked */
+    }
+     .footer-column:last-child {
+         border-bottom: none;
+         margin-bottom: 0;
+     }
+     .footer-column-split {
+         flex-direction: column; /* Stack split columns */
+         gap: 0;
+     }
+     .footer-column-split ul {
+         margin-bottom: 15px;
+     }
+     .footer-legal {
+         border-top: 1px solid #e0e0e0; /* Add top border */
+         padding-top: 20px;
+         margin-top: 20px;
+     }
+     .footer-legal a {
+         display: block; /* Stack legal links */
+         margin: 5px 0;
+     }
+}
+
+/* Ensure hr elements are hidden if we use borders */
+hr.footer-divider {
+    display: none;
+}
+/* End of new footer section */
+
+
+/* Simple Responsive Adjustments */
+@media (max-width: 768px) {
+    .article-header h1 {
+        font-size: 28px;
+    }
+    .article-body {
+        font-size: 16px;
+    }
+    .footer-extras {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .language-selector {
+        margin-bottom: 10px;
+    }
+
+    .recommended-item {
+        width: 180px; /* Slightly smaller cards on medium screens */
+    }
+}
+
+@media (max-width: 600px) {
+     .main-nav ul {
+         flex-wrap: wrap;
+         justify-content: center;
+     }
+     .main-nav li {
+         margin: 5px;
+     }
+     .main-nav a {
+         padding: 8px 10px;
+     }
+
+     /* Stack logo bar items on mobile */
+    .header-top-bar {
+        padding: 20px 0; /* Adjust padding for mobile */
+    }
+     .header-top-bar .logo img {
+         height: 40px; /* Smaller logo on mobile */
+     }
+
+     .recommended-item {
+        width: 150px; /* Even smaller cards on small screens */
+    }
+     .recommended-item-image {
+         width: 60px;
+         height: 40px;
+     }
+      .recommended-item-title {
+         font-size: 13px;
+         -webkit-line-clamp: 2; /* Fewer lines on mobile */
+         max-height: calc(13px * 1.3 * 2);
+     }
+     .footer-nav ul { flex-wrap: wrap; justify-content: center; }
+
+    /* --- Adjustments for the Inline Body Ad on smaller screens --- */
+    .inline-body-ad {
+        float: none; /* Stop floating */
+        margin-left: auto; /* Center the block */
+        margin-right: auto; /* Center the block */
+        margin-top: 20px;
+        margin-bottom: 20px;
+        max-width: 90%; /* Allow slightly wider on mobile */
+    }
+}
+
+/* --- NEW Top-Level Flexbox Layout --- */
+.page-layout-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 25px; /* Keep or adjust gap */
+    padding: 0 15px;
+    max-width: 1500px; /* Keep or adjust overall max width */
+    margin: 0 auto;
+}
+
+/* --- Left Ad Sidebar --- */
+.left-ad-sidebar {
+    width: 260px; /* <<< INCREASED width (e.g., from 220px to 260px) - ADJUST AS NEEDED */
+    flex-shrink: 0;
+    padding-top: 20px;
+    /* position: sticky; Optional */
+    /* top: 15px;       Optional */
+}
+
+/* Ad block styles */
+.ad-block {
+    border: 1px solid #e0e0e0;
+    padding: 10px;
+    background-color: #f9f9f9;
+    text-align: center;
+    margin-bottom: 20px; /* <<< ADD margin to separate the ad blocks */
+}
+/* Remove margin from the last ad block in the sidebar */
+.ad-block:last-child {
+    margin-bottom: 0;
+}
+
+.ad-block h4 {
+    font-size: 10px; color: #888; text-transform: uppercase;
+    margin-bottom: 8px; font-weight: normal;
+}
+.ad-block img { max-width: 100%; height: auto; display: block; margin: 0 auto; }
+.ad-block a { display: block; }
+
+
+/* --- Main Content Area Container --- */
+.main-content-area {
+    max-width: 1000px; /* Main content width remains */
+    width: 100%;
+    padding: 0;
+}
+/* Article container inside main content */
+.article-container {
+     padding-top: 20px;
+     padding-bottom: 40px;
+}
+
+/* --- Trending Sidebar (Right) --- */
+.trending-sidebar {
+    width: 250px; /* <<< RESTORED Fixed width (adjust if needed) */
+    flex-shrink: 0; /* Prevent shrinking */
+    padding-top: 15px; /* <<< RESTORED Reduced padding */
+    position: sticky;
+    top: 15px; /* <<< RESTORED Reduced sticky offset */
+}
+
+.trending-header {
+    margin-bottom: 10px; /* <<< RESTORED Reduced margin */
+    border-bottom: 1px solid #e0e0e0; /* Separator line */
+    padding-bottom: 8px; /* <<< RESTORED Reduced padding */
+}
+
+.trending-title {
+    font-size: 16px; /* <<< RESTORED Reduced font size */
+    font-weight: 900; /* Extra bold */
+    color: #000;
+    margin-bottom: 1px; /* <<< RESTORED Reduced margin */
+    line-height: 1.1;
+    position: relative;
+    display: inline-block;
+    padding-bottom: 3px; /* <<< RESTORED Reduced padding for underline */
+    font-style: italic;
+}
+/* Red underline effect */
+.trending-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 3px; /* <<< RESTORED Reduced thickness */
+    width: 30px; /* <<< RESTORED Reduced width */
+    background-color: #d00;
+}
+
+.trending-subtitle {
+    font-size: 10px; /* <<< RESTORED Reduced font size */
+    font-weight: bold;
+    color: #555;
+    text-transform: uppercase;
+    margin-top: 4px; /* <<< RESTORED Adjusted margin */
+}
+
+.trending-items-container {
+    /* No specific styles needed */
+}
+
+.trending-item {
+    margin-bottom: 15px; /* <<< RESTORED Reduced margin */
+    border-bottom: 1px solid #e0e0e0; /* Separator line */
+    padding-bottom: 10px; /* <<< RESTORED Reduced padding */
+}
+.trending-item:last-child {
+    margin-bottom: 0;
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.trending-item a {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+.trending-item a:hover .trending-item-title {
+    color: #555;
+    text-decoration: underline;
+}
+
+.trending-item-image {
+    position: relative;
+    margin-bottom: 8px; /* <<< RESTORED Reduced margin */
+    line-height: 0;
+}
+
+.trending-item-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border: 4px solid #012850; /* <<< Set border width, style, and color */
+    box-sizing: border-box;    /* <<< Include border within the element's size */
+}
+
+/* View Count Overlay */
+.view-count {
+    position: absolute;
+    top: 5px; /* <<< RESTORED Adjusted position */
+    right: 0;
+    background-color: #012850;
+    color: #fff;
+    font-size: 10px; /* <<< RESTORED Reduced font size */
+    font-weight: bold;
+    padding: 2px 5px 2px 8px; /* <<< RESTORED Reduced padding */
+    z-index: 1;
+    clip-path: polygon(7px 0%, 100% 0%, 100% 100%, 7px 100%, 0% 50%); /* <<< RESTORED Adjusted clip-path start */
+}
+
+.trending-item-title {
+    font-size: 14px; /* <<< RESTORED Reduced font size */
+    font-weight: bold;
+    line-height: 1.2; /* <<< RESTORED Reduced line height */
+    color: #111;
+}
+
+/* --- Responsive Adjustments for Sidebars --- */
+/* This part remains the same - it controls WHEN they hide or stack */
+@media (max-width: 1200px) {
+    .left-ad-sidebar,
+    .trending-sidebar {
+        display: none;
+    }
+    .page-layout-wrapper {
+        display: block;
+        max-width: none;
+        padding: 0;
+    }
+    .main-content-area {
+         max-width: 1000px;
+         margin: 0 auto;
+         padding: 0 15px;
+    }
+}
+/* Optional stacking for smaller screens */
+@media (max-width: 768px) {
+     .page-layout-wrapper { display: block; }
+    .left-ad-sidebar,
+    .trending-sidebar {
+         display: block;
+         padding-top: 0;
+         position: static;
+         width: auto;
+         max-width: 400px;
+         margin: 20px auto 0 auto;
+         border-top: 2px solid #000000;
+         padding-top: 20px;
+    }
+     .left-ad-sidebar { margin-top: 30px; }
+}
+
+/* ================================== */
