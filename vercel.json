@@ -1,9 +1,1 @@
-{
-  "redirects": [
-    {
-      "source": "/",
-      "destination": "/2025/04/23/whatever-article-name-you-want",
-      "permanent": true
-    }
-  ]
-}
+{}
